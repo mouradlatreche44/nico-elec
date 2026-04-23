@@ -417,8 +417,15 @@ body { background: var(--color-bg); color: var(--color-text); }
 .topbar a.topbar-item:hover { color: var(--color-accent); }
 .nav { background: var(--color-bg); border-bottom: 1px solid var(--color-bg-soft); }
 .nav.scrolled { background: rgba(251,253,254,0.94); }
-.strip-atouts, .stats { background: var(--color-bg-soft); }
-.testimonials, .certs { background: var(--color-bg); }
+.strip-atouts, .stats { background: var(--color-primary-dark); color: #ffffff; }
+.strip-atouts .atout-title, .strip-atouts .atout-sub,
+.stats .stat-num, .stats .stat-label { color: #ffffff; }
+.strip-atouts .atout-sub, .stats .stat-label { opacity: .82; }
+.strip-atouts .atout-icon, .stats .stat-icon { color: var(--color-accent); }
+.stats .stat-num em { color: var(--color-accent); }
+.testimonials, .certs, .services, .process, .about, .faq, .realizations { background: var(--color-bg); color: var(--color-text); }
+.cert-name, .service h3, .step h4, .testi-author, .about-lead, .faq-q, .s-head h2, .reali-title { color: var(--color-text); }
+.service p, .step p, .testi-text, .faq-a, .s-head p, .reali-sub { color: var(--color-text-muted, #5A6B7A); }
 .zone { background: var(--color-primary-dark); color: #fff; }
 .cta { background: var(--color-primary-dark); color: #fff; }
 
