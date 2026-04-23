@@ -60,14 +60,28 @@ window.CLIENT = {
   delaiDevis:     "24h",
 
   // ── COULEURS ─────────────────────────────────────────────
+  // Palette : Deep Teal (logo) + Ambre Voltage (complémentaire chromatique).
+  // Le primary est le wordmark du logo, le primaryLight vient du diamant.
   couleurs: {
-    primary:  "#0066FF",   // Bleu volt
-    primaryDark:  "#0047B3",
-    primaryLight: "#3D85FF",
-    accent:   "#FFB800",   // Jaune tension
-    cream:    "#f7f9ff",
-    dark:     "#0a1428",
+    primary:      "#1A4862",   // Deep teal — wordmark du logo
+    primaryDark:  "#0F2F42",   // Hover nav, footer profond
+    primaryLight: "#7EC0DC",   // Cyan diamant du logo
+    accent:       "#E8A93C",   // Ambre voltage (complémentaire)
+    accentDark:   "#C88A22",   // Hover CTA
+    bg:           "#FBFDFE",   // Fond principal — blanc bleuté
+    bgSoft:       "#EEF5FA",   // Sections alternées
+    surface:      "#FFFFFF",   // Cards
+    text:         "#0F2435",   // Noir bleuté
+    textMuted:    "#5A6B7A",   // Labels, captions
+    dark:         "#0F2F42",   // Back-compat
+    cream:        "#EEF5FA",   // Back-compat (remplace ancien beige)
   },
+
+  // ── LOGO ─────────────────────────────────────────────────
+  // Si logoPath = null → fallback SVG généré depuis primary+accent.
+  // Si useImageLogo = true → utilise le PNG (wordmark déjà dans le fichier).
+  logoPath:       "assets/img/logo.png?v=2026042302",
+  useImageLogo:   true,
 
   // ── TYPOGRAPHIE ─────────────────────────────────────────
   fonts: {

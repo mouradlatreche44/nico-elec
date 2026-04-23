@@ -396,3 +396,44 @@ footer.bso-footer { background: var(--ink); color: rgba(255,255,255,0.7); paddin
   --color-primary: var(--color-primary, #0066FF);
   --color-accent:  var(--color-accent, #FFB800);
 }
+
+/* ═════════════ Palette Nico Elec — surcharges ciblées ═════════════ */
+/* CTA principaux en ambre (accent) — "actionnable" vs le teal structurel */
+.btn-primary { background: var(--color-accent); color: var(--color-dark); }
+.btn-primary:hover { background: var(--color-accent-dark); color: var(--color-dark); }
+.nav-cta { background: var(--color-accent); color: var(--color-dark); }
+.nav-cta:hover { background: var(--color-accent-dark); color: var(--color-dark); }
+.tel-float { background: var(--color-accent); color: var(--color-dark); }
+.tel-float:hover { background: var(--color-accent-dark); }
+
+/* Bleu teal pour les liens, focus, underlines */
+a { color: var(--color-primary); }
+.field:focus { border-color: var(--color-primary) !important; background: var(--color-bg-soft) !important; }
+
+/* Fonds principaux — bascule des beiges vers blancs bleutés */
+body { background: var(--color-bg); color: var(--color-text); }
+.topbar { background: var(--color-primary-dark); color: #ffffff; border-bottom: 0; }
+.topbar-item, .topbar a.topbar-item { color: #ffffff; }
+.topbar a.topbar-item:hover { color: var(--color-accent); }
+.nav { background: var(--color-bg); border-bottom: 1px solid var(--color-bg-soft); }
+.nav.scrolled { background: rgba(251,253,254,0.94); }
+.strip-atouts, .stats { background: var(--color-bg-soft); }
+.testimonials, .certs { background: var(--color-bg); }
+.zone { background: var(--color-primary-dark); color: #fff; }
+.cta { background: var(--color-primary-dark); color: #fff; }
+
+/* Accent sur éléments éditoriaux */
+.eyebrow { color: var(--color-accent-dark); }
+em { color: var(--color-primary); font-style: italic; }
+.stat-num, .about-card-num { color: var(--color-primary); }
+.hero-stamp { background: var(--color-accent); color: var(--color-primary-dark); }
+
+/* Brand logo re-skin */
+.brand-logo { color: var(--color-primary); }
+.brand-logo-footer, .brand-logo-footer .brand-word { color: #fff; }
+
+/* Logo image (PNG uploadé par le client) */
+.brand-mark-img { height: 56px; width: auto; object-fit: contain; display: block; }
+.nav-logo .brand-mark-img { height: 68px; }
+.mobile-drawer-head .brand-mark-img { height: 44px; }
+.brand-logo-footer .brand-mark-img { height: 70px; filter: brightness(0) invert(1) opacity(.9); }

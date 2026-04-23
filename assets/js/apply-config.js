@@ -23,20 +23,34 @@
   const setHTML = (sel, v) => qsa(sel).forEach(el => el.innerHTML  = v);
   const setAttr = (sel, a, v) => qsa(sel).forEach(el => el.setAttribute(a, v));
 
-  /* 1. CSS custom properties — brand theming */
+  /* 1. CSS custom properties — full brand theming */
   const root = document.documentElement;
-  root.style.setProperty('--color-primary',       C.couleurs.primary);
-  root.style.setProperty('--color-primary-dark',  C.couleurs.primaryDark  || C.couleurs.primary);
-  root.style.setProperty('--color-primary-light', C.couleurs.primaryLight || C.couleurs.primary);
-  root.style.setProperty('--color-accent',        C.couleurs.accent);
-  root.style.setProperty('--color-cream',         C.couleurs.cream);
-  root.style.setProperty('--color-dark',          C.couleurs.dark || '#0a1428');
-  // back-compat for original BSO CSS variable names
-  root.style.setProperty('--brick',        C.couleurs.primary);
-  root.style.setProperty('--brick-dark',   C.couleurs.primaryDark  || C.couleurs.primary);
-  root.style.setProperty('--brick-light',  C.couleurs.primaryLight || C.couleurs.primary);
-  root.style.setProperty('--clay',         C.couleurs.accent);
-  root.style.setProperty('--cream',        C.couleurs.cream);
+  const k = C.couleurs;
+  const setVar = (n, v) => { if (v) root.style.setProperty(n, v); };
+
+  // Canonical tokens
+  setVar('--color-primary',        k.primary);
+  setVar('--color-primary-dark',   k.primaryDark  || k.primary);
+  setVar('--color-primary-light',  k.primaryLight || k.primary);
+  setVar('--color-accent',         k.accent);
+  setVar('--color-accent-dark',    k.accentDark   || k.accent);
+  setVar('--color-bg',             k.bg           || '#ffffff');
+  setVar('--color-bg-soft',        k.bgSoft       || k.cream);
+  setVar('--color-surface',        k.surface      || '#ffffff');
+  setVar('--color-text',           k.text         || '#0F2435');
+  setVar('--color-text-muted',     k.textMuted    || '#5A6B7A');
+  setVar('--color-dark',           k.dark || k.primaryDark || '#0F2F42');
+
+  // Legacy aliases used by the original BSO template CSS — remapped to new palette
+  setVar('--brick',        k.primary);
+  setVar('--brick-dark',   k.primaryDark  || k.primary);
+  setVar('--brick-light',  k.primaryLight || k.primary);
+  setVar('--clay',         k.accent);
+  setVar('--clay-dark',    k.accentDark   || k.accent);
+  setVar('--cream',        k.bg           || '#fff');
+  setVar('--cream-soft',   k.bgSoft       || k.cream || '#f7f9ff');
+  setVar('--navy',         k.primaryDark  || k.primary);
+  setVar('--line',         k.bgSoft       || '#E5EAF0');
 
   /* 2. Identity / contact / zone */
   setText('[data-c="nom"]',         C.nom);
@@ -342,7 +356,9 @@
 
   setAttr('[data-c="logo-alt"]', 'alt', C.nom);
 
-  /* 22. SVG brand logo — data-driven (lightning bolt + wordmark) */
+  /* 22. Brand logo — use PNG at assets/img/logo.png if present, else SVG fallback */
+  const logoPath = (C.logoPath || 'assets/img/logo.png');
+  const logoImg = `<img src="${esc(logoPath)}" alt="${esc(C.nom)}" class="brand-mark-img" />`;
   const logoSvg = `
     <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="brand-mark">
       <circle cx="22" cy="22" r="21" fill="${C.couleurs.primary}" />
@@ -351,7 +367,11 @@
     </svg>
     <span class="brand-word">${esc(C.nom)}</span>
   `;
-  qsa('[data-c="brand-logo"]').forEach(el => el.innerHTML = logoSvg);
+  qsa('[data-c="brand-logo"]').forEach(el => {
+    const hideWord = el.hasAttribute('data-logo-only');
+    el.innerHTML = (C.useImageLogo !== false ? logoImg : logoSvg)
+      + (hideWord || C.useImageLogo ? '' : `<span class="brand-word">${esc(C.nom)}</span>`);
+  });
 
   document.dispatchEvent(new CustomEvent('client-config-applied', { detail: C }));
 })();
