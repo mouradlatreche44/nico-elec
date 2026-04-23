@@ -27,11 +27,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/bso.css?v=2026042301" />
 <link rel="stylesheet" href="assets/css/sobre.css?v=2026042301" />
+<link rel="stylesheet" href="assets/css/21st.css?v=2026042303" />
 
 <!-- JSON-LD placeholder — replaced by apply-config.js with auto-generated @graph -->
 <script type="application/ld+json" data-c="json-ld">{}</script>
 </head>
 <body>
+
+<!-- STICKY BANNER URGENCE -->
+<div class="st-banner" role="region" aria-label="Urgence électrique">
+  <span class="st-banner-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 11-14h-7l1-6z"/></svg></span>
+  <span>Urgence électrique 24/7 — Habilitation B2V BR — <a href="tel:+33612345678">06 12 34 56 78</a></span>
+  <button class="st-banner-close" aria-label="Fermer la bannière">&times;</button>
+</div>
 
 <!-- TOPBAR -->
 <div class="topbar">
@@ -78,6 +86,15 @@
 
 <!-- HERO -->
 <section class="hero">
+  <svg class="pulse-beams" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <circle class="pb-core" cx="600" cy="300" r="8"/>
+    <path class="pb-beam" d="M600,300 L300,150"/>
+    <path class="pb-beam" d="M600,300 L200,300"/>
+    <path class="pb-beam" d="M600,300 L300,450"/>
+    <path class="pb-beam" d="M600,300 L500,100"/>
+    <path class="pb-beam" d="M600,300 L500,500"/>
+    <path class="pb-beam" d="M600,300 L780,200"/>
+  </svg>
   <div class="container hero-grid">
     <div class="hero-text">
       <div class="hero-kicker reveal">
@@ -120,8 +137,45 @@
   </div>
 </section>
 
+<!-- BENTO SERVICES -->
+<section class="s bento-services">
+  <div class="container">
+    <div class="s-head reveal">
+      <span class="eyebrow">Spécialités</span>
+      <h2>Un savoir-faire <em>complet</em></h2>
+    </div>
+    <div class="bento-grid">
+      <div class="bento-card bc-large">
+        <span class="bento-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+        <div><h3>Tableau électrique</h3><p>Rénovation complète aux normes NF C 15-100, repérage, Consuel garanti.</p></div>
+      </div>
+      <div class="bento-card">
+        <span class="bento-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h3l3-9 6 18 3-9h3"/></svg></span>
+        <h3>Domotique</h3><p>KNX, scénarios, pilotage éclairage et volets.</p>
+      </div>
+      <div class="bento-card">
+        <span class="bento-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="10" height="18" rx="1"/><path d="M15 7h3v6a2 2 0 01-2 2h-1"/></svg></span>
+        <h3>Bornes IRVE</h3><p>Qualifelec IRVE, toutes puissances véhicule électrique.</p>
+      </div>
+      <div class="bento-card bc-tall">
+        <span class="bento-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg></span>
+        <div><h3>Dépannage 24/7</h3><p>Intervention rapide sur Paris et petite couronne. Urgences, pannes, court-circuits, coupures.</p></div>
+      </div>
+      <div class="bento-card bc-wide">
+        <span class="bento-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+        <div><h3>Éclairage sur mesure</h3><p>Étude photométrique, LED premium, variateurs Lutron, scénarios d'ambiance.</p></div>
+      </div>
+      <div class="bento-card">
+        <span class="bento-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/></svg></span>
+        <h3>Mise aux normes</h3><p>Attestation Consuel, NF C 15-100, sécurité garantie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESSUS -->
 <section class="s process" id="process">
+  <div class="spotlight" aria-hidden="true"></div>
   <div class="container">
     <div class="s-head reveal">
       <span class="eyebrow">Notre méthode</span>
@@ -157,6 +211,7 @@
 
 <!-- STATS -->
 <section class="stats">
+  <canvas class="sparkles-canvas" aria-hidden="true"></canvas>
   <div class="container stats-grid">
     <div class="stat reveal d-1"><span class="stat-icon" id="ic-stt1"></span><div class="stat-num" data-count="2016">2016</div><div class="stat-label">Année de fondation</div></div>
     <div class="stat reveal d-2"><span class="stat-icon" id="ic-stt2"></span><div class="stat-num">24<em>/7</em></div><div class="stat-label">Dépannage urgence</div></div>
@@ -186,6 +241,35 @@
       <p>Ce que disent nos clients particuliers et copropriétés après livraison. Avis collectés et vérifiés.</p>
     </div>
     <div class="testi-grid" data-c="testi-grid"></div>
+  </div>
+</section>
+
+<!-- MARQUEE BRANDS -->
+<section class="marquee-brands">
+  <div class="mq-label">Marques partenaires</div>
+  <div class="mq-row">
+    <div class="mq-track">
+      <span class="mq-item">Schneider Electric</span>
+      <span class="mq-item">Legrand</span>
+      <span class="mq-item">Hager</span>
+      <span class="mq-item">ABB</span>
+      <span class="mq-item">Somfy</span>
+      <span class="mq-item">KNX</span>
+      <span class="mq-item">Siemens</span>
+      <span class="mq-item">Eaton</span>
+    </div>
+  </div>
+  <div class="mq-row mq-reverse">
+    <div class="mq-track">
+      <span class="mq-item">Wallbox</span>
+      <span class="mq-item">Lutron</span>
+      <span class="mq-item">Niko</span>
+      <span class="mq-item">Gewiss</span>
+      <span class="mq-item">Philips</span>
+      <span class="mq-item">Delta Dore</span>
+      <span class="mq-item">Legrand Céliane</span>
+      <span class="mq-item">Schneider Odace</span>
+    </div>
   </div>
 </section>
 
@@ -247,7 +331,7 @@
   <div class="container cta-inner cta-grid">
     <div class="reveal-left">
       <span class="eyebrow" style="color:var(--brick-light);">Devis gratuit <span data-c="delai-devis"></span></span>
-      <h2>Parlons de votre<br/><em>installation</em></h2>
+      <h2>Parlons de votre<br/><span class="hl"><em>installation</em><svg viewBox="0 0 300 12" preserveAspectRatio="none"><path d="M2,8 Q75,2 150,6 T298,5"/></svg></span></h2>
       <p class="cta-lead">Décrivez-nous votre besoin : tableau, borne IRVE, domotique ou urgence. Nous revenons sous <span data-c="delai-devis"></span> avec un devis détaillé, gratuit et sans engagement.</p>
       <div class="cta-contact-items">
         <a data-c="tel-link" href="#" class="cta-contact-item"><span class="cta-contact-icon" id="ic-cc1"></span><div><div class="cta-contact-label">Téléphone 24/7</div><div class="cta-contact-value" data-c="tel"></div></div></a>
@@ -306,6 +390,7 @@
 <script src="assets/js/icons.js?v=2026042301"></script>
 <script src="client.config.js?v=2026042301"></script>
 <script src="assets/js/apply-config.js?v=2026042301"></script>
+<script src="assets/js/21st.js?v=2026042303"></script>
 <script src="assets/js/bso-app.js?v=2026042301"></script>
 </body>
 </html>

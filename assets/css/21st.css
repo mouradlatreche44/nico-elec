@@ -1,0 +1,180 @@
+/* 21st.dev vanilla ports — Nico Elec
+   Uses --color-primary (#1A4862), --color-primary-dark, --color-primary-light,
+   --color-accent, --color-bg, --color-bg-soft, --color-text */
+
+/* ============ 1. STICKY BANNER URGENCE ============ */
+.st-banner{
+  position:sticky; top:0; z-index:60;
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  padding:10px 48px 10px 16px;
+  background:linear-gradient(90deg,var(--color-accent) 0%,var(--color-primary) 100%);
+  color:#fff; font-weight:600; font-size:14px; letter-spacing:.01em;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+.st-banner[hidden]{display:none}
+.st-banner .st-banner-ico{display:inline-flex; width:18px; height:18px; flex:0 0 18px}
+.st-banner .st-banner-ico svg{width:100%; height:100%}
+.st-banner a{color:#fff; text-decoration:underline; text-underline-offset:3px}
+.st-banner-close{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  width:32px; height:32px; border:0; border-radius:50%;
+  background:rgba(255,255,255,.15); color:#fff; font-size:18px; line-height:1;
+  cursor:pointer; transition:background .2s;
+}
+.st-banner-close:hover{background:rgba(255,255,255,.28)}
+@media (max-width:768px){
+  .st-banner{font-size:12px; padding:8px 40px 8px 12px}
+}
+
+/* ============ 2. PULSE BEAMS (hero) ============ */
+.hero{position:relative; overflow:hidden}
+.pulse-beams{
+  position:absolute; inset:0; width:100%; height:100%;
+  pointer-events:none; z-index:0; opacity:.55;
+}
+.hero-grid,.hero-text,.hero-visual{position:relative; z-index:1}
+.pulse-beams .pb-core{
+  fill:var(--color-accent);
+  filter:drop-shadow(0 0 12px var(--color-accent));
+  animation:pb-core 3s ease-in-out infinite;
+  transform-origin:center; transform-box:fill-box;
+}
+.pulse-beams .pb-beam{
+  stroke:var(--color-primary); stroke-width:1.5; fill:none;
+  stroke-dasharray:200; stroke-dashoffset:200;
+  animation:pb-draw 3.2s ease-in-out infinite;
+}
+.pulse-beams .pb-beam:nth-child(2){animation-delay:.2s; stroke:var(--color-primary-light)}
+.pulse-beams .pb-beam:nth-child(3){animation-delay:.4s}
+.pulse-beams .pb-beam:nth-child(4){animation-delay:.6s; stroke:var(--color-primary-light)}
+.pulse-beams .pb-beam:nth-child(5){animation-delay:.8s}
+.pulse-beams .pb-beam:nth-child(6){animation-delay:1s; stroke:var(--color-primary-light)}
+@keyframes pb-core{0%,100%{transform:scale(1); opacity:.9}50%{transform:scale(1.35); opacity:.5}}
+@keyframes pb-draw{0%{stroke-dashoffset:200; opacity:0}40%{opacity:.8}100%{stroke-dashoffset:-200; opacity:0}}
+
+/* ============ 3. BENTO GRID ============ */
+.bento-services{padding:96px 0; background:var(--color-bg-soft)}
+.bento-services .s-head{text-align:center; max-width:720px; margin:0 auto 48px}
+.bento-grid{
+  display:grid; gap:18px;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(140px,auto);
+  grid-template-areas:
+    "a a b c"
+    "d e e f"
+    "d e e f";
+}
+.bento-card{
+  position:relative; padding:28px; border-radius:16px;
+  background:var(--color-bg); overflow:hidden;
+  border:1px solid rgba(26,72,98,.08);
+  transition:transform .4s ease, box-shadow .4s ease;
+  display:flex; flex-direction:column; justify-content:space-between;
+  min-height:160px;
+}
+.bento-card::before{
+  content:""; position:absolute; inset:0; border-radius:16px; padding:1px;
+  background:linear-gradient(135deg,var(--color-primary) 0%,transparent 40%,transparent 60%,var(--color-accent) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:0; transition:opacity .4s;
+}
+.bento-card:hover{transform:translateY(-4px) scale(1.01); box-shadow:0 20px 40px -20px rgba(26,72,98,.25)}
+.bento-card:hover::before{opacity:1}
+.bento-card h3{font-family:Fraunces,serif; font-size:22px; margin:0 0 8px; color:var(--color-text)}
+.bento-card p{margin:0; color:var(--color-text-muted,#5A6B7A); font-size:14px; line-height:1.5}
+.bento-card .bento-ico{
+  width:44px; height:44px; border-radius:12px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg,rgba(26,72,98,.1),rgba(232,169,60,.1));
+  color:var(--color-primary); margin-bottom:16px;
+}
+.bento-card .bento-ico svg{width:24px; height:24px}
+.bento-card.bc-large{grid-area:a}
+.bento-card:nth-child(2){grid-area:b}
+.bento-card:nth-child(3){grid-area:c}
+.bento-card.bc-tall{grid-area:d; min-height:300px}
+.bento-card.bc-wide{grid-area:e; min-height:300px;
+  background:linear-gradient(135deg,var(--color-primary-dark) 0%,var(--color-primary) 100%); color:#fff;
+}
+.bento-card.bc-wide h3,.bento-card.bc-wide p{color:#fff}
+.bento-card.bc-wide .bento-ico{background:rgba(255,255,255,.15); color:var(--color-accent)}
+.bento-card:nth-child(6){grid-area:f}
+@media (max-width:900px){
+  .bento-grid{grid-template-columns:1fr; grid-template-areas:"a" "b" "c" "d" "e" "f"}
+  .bento-card.bc-tall,.bento-card.bc-wide{min-height:180px}
+}
+
+/* ============ 4. SPARKLES ============ */
+.stats{position:relative; overflow:hidden}
+.sparkles-canvas{
+  position:absolute; inset:0; width:100%; height:100%;
+  pointer-events:none; z-index:0;
+}
+.stats .container{position:relative; z-index:1}
+
+/* ============ 5. SPOTLIGHT ============ */
+.process{position:relative; overflow:hidden}
+.spotlight{
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(600px circle at var(--x,50%) var(--y,50%),rgba(232,169,60,.12),transparent 60%);
+  opacity:0; transition:opacity .3s;
+}
+.process:hover .spotlight{opacity:1}
+.process .container{position:relative; z-index:1}
+
+/* ============ 6. MARQUEE BRANDS ============ */
+.marquee-brands{padding:64px 0; background:var(--color-bg); overflow:hidden; border-top:1px solid var(--color-bg-soft); border-bottom:1px solid var(--color-bg-soft)}
+.marquee-brands .mq-label{
+  text-align:center; font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--color-text-muted,#5A6B7A); margin-bottom:32px;
+}
+.mq-row{display:flex; overflow:hidden; margin-bottom:16px; mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.mq-track{display:flex; gap:48px; flex-shrink:0; padding-right:48px; animation:mq-scroll 30s linear infinite; will-change:transform}
+.mq-row.mq-reverse .mq-track{animation-direction:reverse; animation-duration:36s}
+.mq-row:hover .mq-track{animation-play-state:paused}
+.mq-item{
+  flex:0 0 auto; font-family:Fraunces,serif; font-size:28px; font-weight:600;
+  color:var(--color-primary); letter-spacing:.01em; white-space:nowrap;
+  padding:8px 16px; opacity:.7; transition:opacity .2s, color .2s;
+}
+.mq-item:hover{opacity:1; color:var(--color-accent)}
+@keyframes mq-scroll{to{transform:translateX(-50%)}}
+
+/* ============ 7. GLOWING EFFECT (testimonials) ============ */
+.testi-grid > *{position:relative; isolation:isolate}
+.testi-grid > *::after{
+  content:""; position:absolute; inset:-1px; border-radius:inherit; pointer-events:none;
+  background:radial-gradient(240px circle at var(--gx,50%) var(--gy,50%),rgba(232,169,60,.28),transparent 55%);
+  opacity:0; transition:opacity .3s; z-index:-1;
+}
+.testi-grid > *:hover::after{opacity:1}
+
+/* ============ 8. 3D TILT CARDS (certs) ============ */
+.tilt-card{
+  transform-style:preserve-3d;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  will-change:transform;
+}
+.tilt-card > *{transform:translateZ(20px)}
+
+/* ============ 9. HERO HIGHLIGHT UNDERLINE ============ */
+.hl{position:relative; display:inline-block; white-space:nowrap}
+.hl svg{
+  position:absolute; left:0; right:0; bottom:-8px; width:100%; height:12px;
+  overflow:visible; pointer-events:none;
+}
+.hl path{
+  fill:none; stroke:var(--color-accent); stroke-width:3; stroke-linecap:round;
+  stroke-dasharray:400; stroke-dashoffset:400;
+  transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1);
+}
+.hl.hl-drawn path{stroke-dashoffset:0}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion:reduce){
+  .pulse-beams .pb-core,.pulse-beams .pb-beam,.mq-track{animation:none !important}
+  .pulse-beams{opacity:.25}
+  .tilt-card{transition:none}
+  .hl path{transition:none; stroke-dashoffset:0}
+}
