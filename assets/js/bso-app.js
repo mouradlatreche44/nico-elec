@@ -1,28 +1,55 @@
-/* BSO Bâtiment — interactions globales */
+/* Template interactions — reusable across client instances */
 (function() {
-  const map = {
+  /* Static icon mapping (for hand-written IDs in HTML shell) */
+  const staticMap = {
     'ic-pin1': 'pin', 'ic-ph1': 'phone', 'ic-m1': 'mail', 'ic-ph2': 'phone', 'ic-ph3': 'phone',
     'ic-doc1': 'doc', 'ic-sh1': 'shield', 'ic-md1': 'medal', 'ic-ck1': 'check',
     'ic-sh2': 'shield', 'ic-md2': 'medal', 'ic-eu1': 'euro', 'ic-cl1': 'clock',
-    'ic-s1': 'trowel', 'ic-s2': 'insulation', 'ic-s3': 'house',
-    'ic-a1': 'arrow', 'ic-a2': 'arrow', 'ic-a3': 'arrow',
-    'ic-st1': 'phone', 'ic-st2': 'eye', 'ic-st3': 'doc', 'ic-st4': 'helmet',
     'ic-af1': 'handshake', 'ic-af2': 'check', 'ic-af3': 'brick', 'ic-af4': 'tools', 'ic-af5': 'arrow',
-    'ic-stt1': 'calendar', 'ic-stt2': 'shield', 'ic-stt3': 'house', 'ic-stt4': 'clock',
-    'ic-ct1': 'shield', 'ic-ct2': 'medal', 'ic-ct3': 'euro', 'ic-ct4': 'check', 'ic-ct5': 'doc',
-    'ic-p1': 'pin','ic-p2': 'pin','ic-p3': 'pin','ic-p4': 'pin','ic-p5': 'pin','ic-p6': 'pin',
-    'ic-p7': 'pin','ic-p8': 'pin','ic-p9': 'pin','ic-p10': 'pin','ic-p11': 'pin','ic-p12': 'pin',
-    'fq1': 'plus','fq2': 'plus','fq3': 'plus','fq4': 'plus','fq5': 'plus','fq6': 'plus',
     'ic-cc1': 'phone', 'ic-cc2': 'mail', 'ic-cc3': 'pin', 'ic-sb1': 'arrow', 'ic-ftel': 'phone',
     'ic-burger': 'menu', 'ic-close': 'plus',
-    'st1': 'star','st1b': 'star','st1c': 'star','st1d': 'star','st1e': 'star',
-    'st2': 'star','st2b': 'star','st2c': 'star','st2d': 'star','st2e': 'star',
-    'st3': 'star','st3b': 'star','st3c': 'star','st3d': 'star','st3e': 'star',
   };
-  Object.entries(map).forEach(([id, icon]) => {
-    const el = document.getElementById(id);
-    if (el && window.BSOIcons) el.innerHTML = window.BSOIcons[icon] || '';
-  });
+  /* Pattern-based icon mapping for dynamic IDs emitted by apply-config.js */
+  const patterns = [
+    { re: /^ic-hb\d+$/,  icon: 'shield'  }, // hero badges
+    { re: /^ic-at1$/,    icon: 'shield'  },
+    { re: /^ic-at2$/,    icon: 'medal'   },
+    { re: /^ic-at3$/,    icon: 'euro'    },
+    { re: /^ic-at4$/,    icon: 'clock'   },
+    { re: /^ic-a\d+$/,   icon: 'arrow'   }, // service card arrows
+    { re: /^ic-st1$/,    icon: 'phone'   },
+    { re: /^ic-st2$/,    icon: 'tools'   },
+    { re: /^ic-st3$/,    icon: 'doc'     },
+    { re: /^ic-st4$/,    icon: 'check'   },
+    { re: /^ic-stt1$/,   icon: 'calendar'},
+    { re: /^ic-stt2$/,   icon: 'clock'   },
+    { re: /^ic-stt3$/,   icon: 'house'   },
+    { re: /^ic-stt4$/,   icon: 'doc'     },
+    { re: /^ic-ct1$/,    icon: 'shield'  },
+    { re: /^ic-ct2$/,    icon: 'medal'   },
+    { re: /^ic-ct3$/,    icon: 'check'   },
+    { re: /^ic-ct4$/,    icon: 'shield'  },
+    { re: /^ic-ct5$/,    icon: 'doc'     },
+    { re: /^ic-p\d+$/,   icon: 'pin'     }, // zone pins
+    { re: /^fq\d+$/,     icon: 'plus'    }, // faq toggles
+    { re: /^ts\d+-\d+$/, icon: 'star'    }, // testimonial stars
+    { re: /^st\d[a-e]?$/,icon: 'star'    }, // legacy testimonial stars
+  ];
+  function paintIcons(root) {
+    const scope = root || document;
+    scope.querySelectorAll('[id]').forEach(el => {
+      if (el.innerHTML) return;
+      const id = el.id;
+      let icon = staticMap[id];
+      if (!icon) {
+        const p = patterns.find(p => p.re.test(id));
+        if (p) icon = p.icon;
+      }
+      if (icon && window.BSOIcons) el.innerHTML = window.BSOIcons[icon] || '';
+    });
+  }
+  paintIcons();
+  document.addEventListener('client-config-applied', () => paintIcons());
   const closeIcon = document.getElementById('ic-close');
   if (closeIcon && closeIcon.firstElementChild) closeIcon.firstElementChild.style.transform = 'rotate(45deg)';
 

@@ -364,3 +364,35 @@ footer.bso-footer { background: var(--ink); color: rgba(255,255,255,0.7); paddin
   .ba-handle::before { width: 46px; height: 46px; }
 }
 
+
+/* ═════════════ Template additions — Nico Elec ═════════════ */
+
+/* Brand logo (SVG + wordmark, driven by client.config.js) */
+.brand-logo { display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display, 'Fraunces'), serif; font-weight: 700; font-size: 26px; letter-spacing: -0.01em; color: var(--navy); line-height: 1; }
+.brand-logo .brand-mark { width: 44px; height: 44px; flex-shrink: 0; filter: drop-shadow(0 2px 6px rgba(0,102,255,0.18)); }
+.brand-logo .brand-word { white-space: nowrap; }
+.brand-logo-footer { color: white; font-size: 22px; }
+.brand-logo-footer .brand-word { color: white; }
+.nav-logo { text-decoration: none; }
+
+/* Commune chips */
+.commune-chip { display: inline-flex; align-items: center; padding: 6px 12px; margin: 4px 6px 4px 0; border: 1px solid var(--line); border-radius: 999px; background: white; font-size: 13px; color: var(--navy); }
+
+/* Marque chips */
+.marque-chip { display: inline-flex; align-items: center; padding: 8px 16px; margin: 6px 8px 6px 0; border: 1px solid var(--line); border-radius: 4px; background: white; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; color: var(--navy); text-transform: uppercase; }
+
+/* Horaires rows */
+.horaire-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.horaire-row:last-child { border-bottom: 0; }
+.horaire-jour { color: #666; font-size: 14px; }
+.horaire-heure { font-weight: 600; color: var(--navy); font-size: 14px; }
+
+/* Urgency accent — CTA cards / buttons emphasizing 24/7 */
+.cta-urgency { background: var(--clay); color: #0a1428; font-weight: 700; }
+.cta-urgency:hover { filter: brightness(1.08); }
+
+/* Ensure CSS color vars fall back to template defaults if client.config.js doesn't load */
+:root {
+  --color-primary: var(--color-primary, #0066FF);
+  --color-accent:  var(--color-accent, #FFB800);
+}
