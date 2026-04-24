@@ -134,11 +134,18 @@
 .mq-row.mq-reverse .mq-track{animation-direction:reverse; animation-duration:36s}
 .mq-row:hover .mq-track{animation-play-state:paused}
 .mq-item{
-  flex:0 0 auto; font-family:Fraunces,serif; font-size:28px; font-weight:600;
-  color:var(--color-primary); letter-spacing:.01em; white-space:nowrap;
-  padding:8px 16px; opacity:.7; transition:opacity .2s, color .2s;
+  flex:0 0 auto; white-space:nowrap;
+  padding:8px 24px; opacity:.55; transition:opacity .25s ease, filter .25s ease;
+  display:flex; align-items:center;
 }
-.mq-item:hover{opacity:1; color:var(--color-accent)}
+.mq-item img{
+  height:36px; width:auto; max-width:160px;
+  object-fit:contain; display:block;
+  filter:saturate(0) brightness(0.3);
+  transition:filter .25s ease;
+}
+.mq-item:hover{ opacity:1; }
+.mq-item:hover img{ filter:saturate(1) brightness(1); }
 @keyframes mq-scroll{to{transform:translateX(-50%)}}
 
 /* ============ 7. GLOWING EFFECT (testimonials) ============ */
