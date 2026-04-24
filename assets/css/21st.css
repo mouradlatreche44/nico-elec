@@ -26,31 +26,20 @@
   .st-banner{font-size:12px; padding:8px 40px 8px 12px}
 }
 
-/* ============ 2. PULSE BEAMS (hero) ============ */
+/* ============ 2. HERO AMBIENT GLOW (remplace Pulse Beams) ============ */
 .hero{position:relative; overflow:hidden}
-.pulse-beams{
-  position:absolute; inset:0; width:100%; height:100%;
-  pointer-events:none; z-index:0; opacity:.55;
-}
 .hero-grid,.hero-text,.hero-visual{position:relative; z-index:1}
-.pulse-beams .pb-core{
-  fill:var(--color-accent);
-  filter:drop-shadow(0 0 12px var(--color-accent));
-  animation:pb-core 3s ease-in-out infinite;
-  transform-origin:center; transform-box:fill-box;
+.hero-ambient{
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 55% 60% at 72% 45%, rgba(126,192,220,0.13) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 35% at 78% 28%, rgba(232,169,60,0.08) 0%, transparent 60%);
+  animation: hero-breathe 6s ease-in-out infinite;
 }
-.pulse-beams .pb-beam{
-  stroke:var(--color-primary); stroke-width:1.5; fill:none;
-  stroke-dasharray:200; stroke-dashoffset:200;
-  animation:pb-draw 3.2s ease-in-out infinite;
+@keyframes hero-breathe{
+  0%,100%{ opacity:.7; transform:scale(1); }
+  50%     { opacity:1;  transform:scale(1.04); }
 }
-.pulse-beams .pb-beam:nth-child(2){animation-delay:.2s; stroke:var(--color-primary-light)}
-.pulse-beams .pb-beam:nth-child(3){animation-delay:.4s}
-.pulse-beams .pb-beam:nth-child(4){animation-delay:.6s; stroke:var(--color-primary-light)}
-.pulse-beams .pb-beam:nth-child(5){animation-delay:.8s}
-.pulse-beams .pb-beam:nth-child(6){animation-delay:1s; stroke:var(--color-primary-light)}
-@keyframes pb-core{0%,100%{transform:scale(1); opacity:.9}50%{transform:scale(1.35); opacity:.5}}
-@keyframes pb-draw{0%{stroke-dashoffset:200; opacity:0}40%{opacity:.8}100%{stroke-dashoffset:-200; opacity:0}}
 
 /* ============ 3. BENTO GRID ============ */
 .bento-services{padding:96px 0; background:var(--color-bg-soft)}
@@ -180,8 +169,8 @@
 
 /* ============ REDUCED MOTION ============ */
 @media (prefers-reduced-motion:reduce){
-  .pulse-beams .pb-core,.pulse-beams .pb-beam,.mq-track{animation:none !important}
-  .pulse-beams{opacity:.25}
+  .hero-ambient,.mq-track{animation:none !important}
+  .hero-ambient{opacity:.4}
   .tilt-card{transition:none}
   .hl path{transition:none; stroke-dashoffset:0}
 }
