@@ -200,6 +200,77 @@ window.BSOIcons = {
   sun: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
     <circle cx="32" cy="32" r="10" fill="currentColor" fill-opacity="0.15"/>
     <path d="M32 6 L32 14 M32 50 L32 58 M6 32 L14 32 M50 32 L58 32 M13 13 L19 19 M45 45 L51 51 M13 51 L19 45 M45 19 L51 13"/>
+  </svg>`,
+
+  // Éclair (électricité / urgence / bolt)
+  bolt: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M36 4 L14 36 L28 36 L24 60 L50 26 L34 26 L40 4 Z" fill="currentColor" fill-opacity="0.12"/>
+  </svg>`,
+
+  // Tableau électrique modulaire (panel)
+  panel: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <rect x="8" y="8" width="48" height="48" rx="3" fill="currentColor" fill-opacity="0.08"/>
+    <path d="M8 22 L56 22 M8 38 L56 38"/>
+    <rect x="14" y="13" width="4" height="6" fill="currentColor"/>
+    <rect x="22" y="13" width="4" height="6" fill="currentColor"/>
+    <rect x="30" y="13" width="4" height="6" fill="currentColor"/>
+    <rect x="38" y="13" width="4" height="6" fill="currentColor"/>
+    <rect x="46" y="13" width="4" height="6" fill="currentColor"/>
+    <rect x="14" y="29" width="4" height="6" fill="currentColor"/>
+    <rect x="22" y="29" width="4" height="6" fill="currentColor"/>
+    <rect x="30" y="29" width="4" height="6" fill="currentColor"/>
+    <rect x="38" y="29" width="4" height="6" fill="currentColor"/>
+    <rect x="46" y="29" width="4" height="6" fill="currentColor"/>
+  </svg>`,
+
+  // Prise européenne (plug)
+  plug: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <rect x="14" y="10" width="36" height="36" rx="6" fill="currentColor" fill-opacity="0.1"/>
+    <circle cx="25" cy="26" r="3" fill="currentColor"/>
+    <circle cx="39" cy="26" r="3" fill="currentColor"/>
+    <circle cx="32" cy="38" r="2.2" fill="currentColor"/>
+    <path d="M32 46 L32 58"/>
+  </svg>`,
+
+  // Câble / wire (pour "Câblage soigné")
+  cable: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 20 Q18 20 18 32 Q18 44 30 44 Q42 44 42 32 Q42 20 54 20 L58 20"/>
+    <rect x="4" y="14" width="6" height="12" rx="1" fill="currentColor" fill-opacity="0.15"/>
+    <rect x="54" y="14" width="6" height="12" rx="1" fill="currentColor" fill-opacity="0.15"/>
+    <path d="M6 50 L58 50" stroke-dasharray="3 3"/>
+  </svg>`,
+
+  // Borne de recharge VE (charger)
+  charger: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <rect x="18" y="6" width="28" height="44" rx="4" fill="currentColor" fill-opacity="0.1"/>
+    <rect x="24" y="12" width="16" height="12" rx="2"/>
+    <path d="M32 30 L28 38 L34 38 L30 46" stroke-width="2.6"/>
+    <path d="M14 56 L50 56"/>
+    <path d="M26 50 L26 56 M38 50 L38 56"/>
+  </svg>`,
+
+  // Maison connectée / domotique (smart home)
+  smarthome: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 30 L32 10 L56 30" />
+    <path d="M12 28 L12 54 L52 54 L52 28" fill="currentColor" fill-opacity="0.08"/>
+    <circle cx="32" cy="38" r="4"/>
+    <path d="M32 28 Q22 30 22 40 M32 28 Q42 30 42 40 M32 22 Q16 26 16 42 M32 22 Q48 26 48 42"/>
+  </svg>`,
+
+  // Sparkle / étincelle (propre / clean)
+  sparkle: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M32 6 L35 26 L55 32 L35 38 L32 58 L29 38 L9 32 L29 26 Z" fill="currentColor" fill-opacity="0.12"/>
+    <path d="M52 10 L54 16 L60 18 L54 20 L52 26 L50 20 L44 18 L50 16 Z" fill="currentColor" fill-opacity="0.2"/>
+  </svg>`,
+
+  // Coupe / trophée (marques premium / award)
+  award: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 10 L44 10 L44 24 Q44 34 32 36 Q20 34 20 24 Z" fill="currentColor" fill-opacity="0.12"/>
+    <path d="M20 14 Q10 14 10 22 Q10 28 20 30"/>
+    <path d="M44 14 Q54 14 54 22 Q54 28 44 30"/>
+    <path d="M26 36 L26 44 L38 44 L38 36"/>
+    <rect x="18" y="44" width="28" height="6" rx="1" fill="currentColor" fill-opacity="0.15"/>
+    <path d="M14 54 L50 54"/>
   </svg>`
 };
 
