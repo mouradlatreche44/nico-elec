@@ -8,13 +8,21 @@ Dossier de sortie : `assets/img/`
 
 ---
 
-## 1. Hero accueil
-**Fichier :** `assets/img/hero-chantier.jpg` — 1920×1280 (3:2)
-**Prompt :** Professional French electrician in a Haussmann Parisian apartment, installing a modern modular electrical panel (tableau électrique NF C 15-100), daylight from a tall window with crown moulding, copper busbars and row of circuit breakers visible, hands with insulated gloves, a yellow multimeter on a wooden step-ladder, navy polo shirt, clean workspace, cinematic natural light, photojournalism, shallow depth of field, teal and amber accents, no text, no logo.
+## ⚠️ CHARACTER SHEET — artisan récurrent
+Le MÊME personnage doit apparaître sur le hero ET le about (et idéalement d'autres scènes) :
+> **Nico** — French male, 40 years old, 1m80, athletic build, short dark brown hair (slightly tousled), neatly trimmed brown beard, light olive-tan skin, green-hazel eyes, confident relaxed expression. Wears a **navy blue polo shirt** (solid, no logo), dark work trousers, black leather tool belt, brown leather watch. Friendly but professional demeanor.
+>
+> **Seed partagé :** `771420` (à passer aux deux générations pour cohérence de visage)
 
-## 2. Portrait artisan — page accueil + à propos
+## 1. Hero accueil — artisan devant camionnette
+**Fichier :** `assets/img/hero-chantier.jpg` — 1920×1280 (3:2)
+**Seed :** `771420`
+**Prompt :** Professional editorial photograph of Nico, a 40-year-old French artisan electrician, athletic build, short dark brown tousled hair, neatly trimmed brown beard, light olive-tan skin, green-hazel eyes, wearing a navy blue polo shirt (no logo), dark work trousers, black leather tool belt, standing confidently in front of his open white service van (unbranded, side door slid open showing organized tool shelves with coiled cables and plastic cases), Parisian haussmannian street background softly blurred in afternoon warm golden light, one hand holding a yellow multimeter, relaxed confident smile, shallow depth of field, cinematic documentary photography, teal and amber ambient tones, ultra-realistic skin texture, no text, no logo, no watermark.
+
+## 2. Portrait artisan — page à propos
 **Fichier :** `assets/img/about-artisan.jpg` — 1600×1067 (3:2)
-**Prompt :** Editorial portrait of a 40-year-old French artisan electrician, short brown hair, trimmed beard, navy polo, tool belt, relaxed confident smile, standing in front of his open white service van (unbranded, no text), Parisian haussmannian street backdrop softly blurred, warm golden hour light, shallow depth of field, documentary style, no text, no logo.
+**Seed :** `771420`
+**Prompt :** Editorial mid-body portrait of the SAME 40-year-old French artisan electrician Nico (exact same face as previous image: athletic build, short dark brown tousled hair, neatly trimmed brown beard, light olive-tan skin, green-hazel eyes, navy blue polo shirt no logo, black leather tool belt), now standing on a Parisian sidewalk next to his white service van (unbranded, rear doors slightly open), arms relaxed, slight friendly smile looking toward camera, Haussmannian limestone building facade blurred in background, warm golden hour side-light, shallow depth of field, documentary editorial photography, ultra-realistic skin texture, natural film grain, no text, no logo, no watermark.
 
 ## 3. Service — Tableau électrique
 **Fichier :** `assets/img/srv-tableau.jpg` — 1400×933 (3:2)
