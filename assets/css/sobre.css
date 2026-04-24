@@ -444,3 +444,240 @@ em { color: var(--color-primary); font-style: italic; }
 .nav-logo .brand-mark-img { height: 68px; }
 .mobile-drawer-head .brand-mark-img { height: 44px; }
 .brand-logo-footer .brand-mark-img { height: 70px; filter: brightness(0) invert(1) opacity(.9); }
+
+
+/* ═════════════ UI/UX Pro Max Audit — 2026-04-24 ═════════════ */
+
+/* ── PHASE 1 · ACCESSIBILITY & INTERACTION ─────────────────── */
+
+/* 1. Visible focus rings */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 2. Touch targets ≥ 44×44px */
+.btn        { min-height: 44px; min-width: 44px; }
+.nav-link   { min-height: 44px; display: inline-flex; align-items: center; }
+.nav-cta    { min-height: 44px; }
+.topbar-item { min-height: 44px; display: inline-flex; align-items: center; }
+.tel-float  { min-width: 44px; min-height: 44px; }
+.footer-social { min-width: 44px; min-height: 44px; }
+
+/* 3. Cursor pointer on card-like interactive elements */
+.service-card,
+.service,
+.bento-card,
+.testi,
+.testi-card,
+.cert,
+.cert-item,
+.tilt-card,
+.reali-card,
+.realization,
+.faq-item { cursor: pointer; }
+
+/* 4. Skip-to-content link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 20px;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* 5. Form :invalid / :valid feedback */
+.field:user-invalid,
+.field:not(:placeholder-shown):invalid {
+  border-color: #d9534f;
+  border-width: 2px;
+  background: #fff8f8;
+}
+.field:user-valid,
+.field:not(:placeholder-shown):valid {
+  border-color: #3aaa5e;
+  background: #f8fff9;
+}
+
+/* ── PHASE 2 · TYPOGRAPHY & SPACING ────────────────────────── */
+
+/* 6. Body line-height enforcement */
+body { line-height: 1.65; }
+
+/* 7. Hero headline gradient text */
+.hero h1 em {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-style: italic;
+}
+
+/* 8. Eyebrow spacing */
+.eyebrow {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* 9. Stat numbers — tabular numerics */
+.stat-num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* 10. Section head max-width when centered */
+.s-head[style*="center"],
+.s-head.text-center,
+.s-head {
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+/* ── PHASE 3 · ANIMATION POLISH ────────────────────────────── */
+
+/* 11. Hover card shadows & transitions */
+.service,
+.service-card,
+.bento-card,
+.testi,
+.testi-card {
+  box-shadow: 0 1px 3px rgba(15,47,66,0.06), 0 1px 2px rgba(15,47,66,0.04);
+  transition: box-shadow 250ms ease, transform 250ms ease;
+}
+.service:hover,
+.service-card:hover,
+.bento-card:hover,
+.testi:hover,
+.testi-card:hover {
+  box-shadow: 0 10px 40px rgba(15,47,66,0.12), 0 4px 12px rgba(15,47,66,0.08);
+}
+
+/* 12. Button ripple pulse keyframe */
+@keyframes btn-pulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.95); }
+  70%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+.btn-primary.btn-clicked {
+  animation: btn-pulse 300ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 13. Sticky banner slide-in */
+@keyframes banner-slide-in {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.st-banner {
+  animation: banner-slide-in 0.4s ease forwards;
+}
+
+/* 14. Nav scrolled smooth box-shadow */
+.nav {
+  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+.nav.scrolled {
+  box-shadow: 0 2px 20px rgba(15,47,66,0.08);
+}
+
+/* ── PHASE 4 · HERO GLOW ────────────────────────────────────── */
+
+/* 15. Hero glow element */
+.hero { position: relative; overflow: hidden; }
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 60% 40%, rgba(126,192,220,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 70% 30%, rgba(232,169,60,0.10) 0%, transparent 60%);
+}
+.hero > * { position: relative; z-index: 1; }
+
+/* ── PHASE 5 · TESTIMONIALS PREMIUM STYLE ──────────────────── */
+
+/* 16. Premium dark testimonial cards */
+.testi-card--premium,
+.testi.testi-card--premium {
+  background: var(--color-primary-dark);
+  color: #fff;
+  border-color: rgba(126,192,220,0.2);
+}
+.testi-card--premium .testi-text { color: rgba(255,255,255,0.85); }
+.testi-card--premium .testi-author { color: #fff; border-color: rgba(255,255,255,0.12); }
+.testi-card--premium .testi-name  { color: #fff; }
+.testi-card--premium .testi-city,
+.testi-card--premium .testi-role  { color: var(--color-primary-light); }
+.testi-card--premium .testi-stars { color: var(--color-accent); }
+.testi-card--premium .testi-avatar { background: var(--color-primary); }
+
+/* ── PHASE 6 · MOBILE & RESPONSIVE POLISH ──────────────────── */
+
+/* 17. No horizontal scroll */
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* 18. Nav height & scroll padding */
+.nav { min-height: 64px; }
+body { scroll-padding-top: 80px; }
+
+/* 19. Mobile bento single-column */
+@media (max-width: 639px) {
+  .bento-services {
+    grid-template-columns: 1fr !important;
+    grid-template-areas: none !important;
+  }
+}
+
+/* 20. Touch action on buttons — eliminate 300ms tap delay */
+.btn { touch-action: manipulation; }
+
+/* ── PHASE 7 · PRINT ────────────────────────────────────────── */
+
+/* 21. Print styles */
+@media print {
+  .topbar,
+  .nav,
+  .mobile-drawer,
+  .tel-float,
+  .st-banner,
+  .cta,
+  .bso-footer { display: none !important; }
+
+  body { background: white; color: black; }
+  .hero, section.s, .stats, .zone, .about { padding: 24px 0; }
+  a { color: black; text-decoration: underline; }
+}
+
+/* ── REDUCED MOTION OVERRIDES ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow { display: none; }
+  .btn-primary.btn-clicked { animation: none; }
+  .st-banner { animation: none; }
+  .service,
+  .service-card,
+  .bento-card,
+  .testi,
+  .testi-card {
+    transition: box-shadow 0ms;
+  }
+}

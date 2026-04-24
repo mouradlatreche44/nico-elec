@@ -156,3 +156,64 @@
     document.addEventListener('DOMContentLoaded', boot);
   } else { boot(); }
 })();
+
+/* === UI/UX PRO MAX ADDITIONS === */
+(function(){
+  'use strict';
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- Phase 4 · Hero background glow --- */
+  function initHeroGlow(){
+    var heroEl = document.querySelector('.hero');
+    if(!heroEl) return;
+    // Avoid duplicating if already injected
+    if(heroEl.querySelector('.hero-glow')) return;
+    var glow = document.createElement('div');
+    glow.className = 'hero-glow';
+    glow.setAttribute('aria-hidden','true');
+    heroEl.prepend(glow);
+  }
+
+  /* --- Phase 5 · Premium testimonial cards (every other = even index → 0,2,4...) --- */
+  function initTestiPremium(){
+    document.querySelectorAll('.testi-grid > .testi, .testi-grid > .testi-card, .testi-card').forEach(function(c, i){
+      if(i % 2 === 0) c.classList.add('testi-card--premium');
+    });
+  }
+
+  /* --- Phase 3 · Button ripple pulse on click --- */
+  function initBtnRipple(){
+    document.querySelectorAll('.btn-primary').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(reduced) return;
+        btn.classList.remove('btn-clicked');
+        // Force reflow so re-adding the class restarts the animation
+        void btn.offsetWidth;
+        btn.classList.add('btn-clicked');
+        btn.addEventListener('animationend', function onEnd(){
+          btn.classList.remove('btn-clicked');
+          btn.removeEventListener('animationend', onEnd);
+        });
+      });
+    });
+  }
+
+  /* --- Phase 7 · Lazy-load images outside the first viewport --- */
+  function initLazyImages(){
+    document.querySelectorAll('img:not(.nav-logo img):not(.hero img)').forEach(function(img){
+      if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy');
+    });
+  }
+
+  /* --- Boot --- */
+  function bootProMax(){
+    initHeroGlow();
+    initTestiPremium();
+    initBtnRipple();
+    initLazyImages();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', bootProMax);
+  } else { bootProMax(); }
+})();
